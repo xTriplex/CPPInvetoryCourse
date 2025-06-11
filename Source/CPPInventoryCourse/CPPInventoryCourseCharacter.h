@@ -10,6 +10,7 @@
 class USpringArmComponent;
 class UCameraComponent;
 class UInputAction;
+class UInputMappingContext;
 struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
@@ -32,7 +33,6 @@ class ACPPInventoryCourseCharacter : public ACharacter
 	UCameraComponent* FollowCamera;
 	
 protected:
-
 	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input")
 	UInputAction* JumpAction;
@@ -48,7 +48,6 @@ protected:
 	/** Mouse Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input")
 	UInputAction* MouseLookAction;
-
 public:
 
 	/** Constructor */
