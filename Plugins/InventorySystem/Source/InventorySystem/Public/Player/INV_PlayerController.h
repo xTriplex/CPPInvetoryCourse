@@ -10,6 +10,7 @@
  * 
  */
 
+class UINV_InventoryComponent;
 class UInputMappingContext;
 class UInputAction;
 class UINV_HUDWidget;
@@ -21,6 +22,10 @@ class INVENTORYSYSTEM_API AINV_PlayerController : public APlayerController
 public:
 	AINV_PlayerController();
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+	void ToggleInventory();
+	
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
@@ -28,12 +33,17 @@ private:
 	void PrimaryInteract();
 	void CreateHUDWidget();
 	void TraceForItem();
+
+	TWeakObjectPtr<UINV_InventoryComponent> InventoryComponent;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Inventory")
 	TArray<TObjectPtr<UInputMappingContext>> DefaultIMCs;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Inventory")
 	TObjectPtr<UInputAction> PrimaryInteractAction;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inventory")
+	TObjectPtr<UInputAction> ToggleInventoryAction;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Inventory")
 	TSubclassOf<UINV_HUDWidget> HUDWidgetClass;
